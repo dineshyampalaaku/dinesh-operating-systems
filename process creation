@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <unistd.h> 
+int main() {
+    printf("Program execution start here.\n");
+ int r;
+    for (int i=0; i<5; i++) {
+    if ((r=fork())==0) {
+    break;
+  }
+  }
+    printf(
+        "Hello world -> My PID is %d, I am %s process\n", 
+        getpid(), 
+        r==0 ? "child" : "parent"
+    );
+    return 0;
+}
+Output
+Program execution start here.
+Hello world -> My PID is 635, I am child process
+Hello world -> My PID is 636, I am child process
+Hello world -> My PID is 637, I am child process
+Hello world -> My PID is 638, I am child process
+Hello world -> My PID is 634, I am parent process
+Hello world -> My PID is 639, I am child process
+
